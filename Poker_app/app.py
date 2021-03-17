@@ -1,8 +1,9 @@
 # installing flask and SQLalchemyfor use
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, 
 #from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
+
 
 @app.route('/home')
 def home():
@@ -10,15 +11,15 @@ def home():
 
 @app.route('/players', methods=['GET', 'POST', 'Delete'])
 def players():
-    return render_template('players.html', title="Current registered players")
+    return render_template('players.html')
 
-# @app.route('/tournements')
-# def tournements():
-#     return ('tournements.html', title="Tournements available to join)
+@app.route('/tournements')
+def tournements():
+    return render_template('tournements.html')
 
-# @app.route('/rankings', methods=['GET')
-# def rankings():
-#     return ('rankings.html', title="Rankings board")
+@app.route('/rankings', methods=['GET'])
+def rankings():
+    return render_template('rankings.html')
 
 
 # from app import db, poker_players
