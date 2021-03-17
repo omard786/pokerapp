@@ -4,14 +4,13 @@
     <body>
         <h1> welcome to my players page </h1>
         <h2> <a href="{{ url_for('home') }}">home</a></h2>
+        <h3></h3>
         <form action="" method= 'POST'>
-                {{form.first_name}}
-                {{form.last_name}}
-                {{form.age}}
-                {{form.city}}
-                {{form.submit}}
-
-
+        <input name="firstname">
+        <input name="lastname">
+        <input name="age">
+        <input name="city">
+        <input type="submit"value="Submit">
         </form>
     </body>
 </html>

@@ -2,7 +2,7 @@
 from flask import Flask, request, render_template
 from flask_wtf import FlaskForm
 from flask_sqlalchemy import SQLAlchemy
-from models import db
+from models import db, poker_players
 from wtforms import StringField, SubmitField
 
 app = Flask(__name__)
@@ -27,10 +27,13 @@ def home():
 def players():
     form = players_form
     if request.method=='POST':
-        a= form.first_name.data
-        b= form.last_name.data
-        c= form.age.data
-        d= form.city.data
+        a= request.form['firstname']
+        b= request.form['lastname']
+        c= request.form['age']
+        d= request.form['city']
+        newplayer= poker_players(first_name=a, last_name=b, age=c, city=d)
+        db.session.add(newplayer)
+        db.session.commit()
     return render_template('players.html', form=form)
 
 @app.route('/tournements')
