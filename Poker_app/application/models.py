@@ -1,5 +1,6 @@
- from application import db
+from flask_sqlalchemy import SQLAlchemy
 
+db = SQLAlchemy()
 class poker_players(db.Model):
     player_id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(15), nullable=False)
@@ -10,8 +11,8 @@ class poker_players(db.Model):
 class tournements(db.Model):
     tournement_id = db.Column(db.Integer, primary_key=True)
     location = db.Column(db.String(15), nullable=False)
-    time starting = db.Column(db.String(15), nullable=False)
-    player_id = db.Column(db.String(15), foreignkey=False)
+    time_starting = db.Column(db.String(15), nullable=False)
+    player_id = db.Column(db.String(15))
     
 class rankings(db.Model):
     ranking_id = db.Column(db.Integer, primary_key=True)
@@ -19,4 +20,3 @@ class rankings(db.Model):
     tournement_id = db.Column(db.String(15), nullable=False)
     prize_money_won = db.Column(db.String(15), nullable=False)
     
-
