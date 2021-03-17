@@ -19,13 +19,30 @@ class players_form(FlaskForm):
     city = StringField('city')
     submit = SubmitField('add_player')
 
+class tournements_form(FlaskForm):
+    first_name = StringField('tournement_id')
+    last_name = StringField('location')
+    age = StringField('time starting')
+    city = StringField('player_id')
+    submit = SubmitField('add_tournement')
+
+class ranking_form(FlaskForm):
+    first_name = StringField('Ranking_id')
+    last_name = StringField('player_id')
+    age = StringField('tournement_id')
+    city = StringField('prize_won')
+    submit = SubmitField('add_your_rank')
+
+   
+
+
 @app.route('/home')
 def home():
     return render_template('home.html')
 
 @app.route('/players', methods=['GET', 'POST'])
 def players():
-    form = players_form
+    form = players_form()
     if request.method=='POST':
         a= request.form['firstname']
         b= request.form['lastname']
@@ -40,29 +57,29 @@ def players():
 
 @app.route('/tournements', methods=['GET', 'POST'])
 def tournements():
-     form = tournements__form
+    form = tournements_form()
     if  request.method=='POST':
         a= request.form['tournement_id']
         b= request.form['location']
         c= request.form['timestarting']
         d= request.form['player_id']
-        newtournement= tournements(tournement_id=a, location=b, time_starting=c, player_id=d)
+        newtournement= poker_players(tournement_id=a, location=b, time_starting=c, player_id=d)
         db.session.add(newtournement)
         db.session.commit()
-    return render_template('tournements.html')
+    return render_template('tournements.html', form=form)
 
 @app.route('/rankings', methods=['GET', 'POST'])
 def rankings():
-     form = players_form
+    form = ranking_form()
     if request.method=='POST':
         a= request.form['Ranking_id']
         b= request.form['player_id']
         c= request.form['tournement_id']
         d= request.form['prize_won']
         newranking= poker_players(ranking_id=a, player_id=b, tournement_id=c, prize_won=d)
-        db.session.add(newpranking)
+        db.session.add(newranking)
         db.session.commit()
-    return render_template('rankings.html')
+    return render_template('rankings.html', form=form)
 
 
 # from app import db, poker_players
