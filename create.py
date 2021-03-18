@@ -6,9 +6,10 @@ db.create_all()
 
 Omar= poker_player(first_name='Omar', last_name= 'Dhin', age= '23', city='bradford')
 Jack= poker_player(first_name='Jack', last_name= 'Dhin', age= '23', city='bristol')
-Oliver= poker_player(first_name='Oliver', last_name= 'Dhin', age= '23', city='kent')
+Oliver= poker_player(first_name='Oliver', last_name= 'Oakley', age= '23', city='kent')
 Michael= poker_player(first_name='Michael', last_name= 'Dhin', age= '23', city='leeds')
 Kelvin= poker_player(first_name='Kelvin', last_name= 'Bastow', age= '26', city='london')
+Hamza= poker_player(first_name='Hamza', last_name= 'younas', age='')
 
 db.session.add(Omar)
 db.session.add(Jack)
