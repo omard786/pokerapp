@@ -60,7 +60,6 @@ def players():
 
 
 
-
 @app.route('/tournements', methods=['GET', 'POST'])
 def tournements():
     form = tournements_form()
@@ -86,6 +85,18 @@ def rankings():
         db.session.add(newranking)
         db.session.commit()
     return render_template('rankings.html', form=form)
+
+
+#@app.route('/add')
+#def add():
+
+# @app.route('/read')
+# def read():
+#    all_poker_player=poker_player.query.all()
+#     return_name_string= ""
+#     for first_name in poker_player:
+#     return_name_string+="<br>"+ first_name.name
+#     return return_name_string
 
 
 # from app import db, poker_players

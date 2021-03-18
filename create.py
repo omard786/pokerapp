@@ -9,13 +9,18 @@ Jack= poker_player(first_name='Jack', last_name= 'Dhin', age= '23', city='bristo
 Oliver= poker_player(first_name='Oliver', last_name= 'Oakley', age= '23', city='kent')
 Michael= poker_player(first_name='Michael', last_name= 'Dhin', age= '23', city='leeds')
 Kelvin= poker_player(first_name='Kelvin', last_name= 'Bastow', age= '26', city='london')
-Hamza= poker_player(first_name='Hamza', last_name= 'younas', age='')
+Hamza= poker_player(first_name='Hamza', last_name= 'Dhin', age='20', city= 'leeds')
+Usama= poker_player(first_name='Usama', last_name ='Nasir', age='23', city='bradford')
+
+
 
 db.session.add(Omar)
 db.session.add(Jack)
 db.session.add(Oliver)
 db.session.add(Michael)
 db.session.add(Kelvin)
+db.session.add(Hamza)
+db.session.add(usama)
 db.session.commit()
 
 beginner_tourn= tournement(location= 'meeting room 1', time_starting= '14:00')

@@ -1,5 +1,5 @@
 #from flask_sqlalchemy import SQLAlchemy
-from app import db 
+from app import db, poker_player, tournement, ranking 
 
 class poker_player(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -10,9 +10,15 @@ class poker_player(db.Model):
     tournement = db.relationship('tournement', backref = 'poker_player')
     players_ranking = db.relationship('ranking', backref = 'poker_player')
 
-all_poker_player=poker_player.query.all
+all_poker_player=poker_player.query.all #gets all the data from the database together 
 all_poker_playerid=poker_player.id
 poker_player_order=poker_player.order_by(poker_player.first_name).all()
+usama_delete= poker_player.query('usama')
+
+
+h_name_change=poker_player(last_name='dhin')
+h_name_chang.name='younas'
+db.session.commit()
 
 #give total number of players as a interger
 number_of_players=poker_player.count()
