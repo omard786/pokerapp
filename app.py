@@ -2,6 +2,7 @@
 from flask import Flask, request, render_template, url_for
 from flask_wtf import FlaskForm
 from flask_sqlalchemy import SQLAlchemy
+#from application import db
 #from application.models import  poker_player, tournement, ranking
 from wtforms import StringField, SubmitField
 
