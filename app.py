@@ -1,20 +1,18 @@
 # installing flask and SQLalchemyfor use
 from flask import Flask, request, render_template, url_for
 from flask_wtf import FlaskForm
-from flask_sqlalchemy import SQLAlchemy
-#from application import db
-#from application.models import  poker_player, tournement, ranking
+#fetching the models to use
+from application.models import poker_player, tournement, ranking
 from wtforms import StringField, SubmitField
+from application import app
 
-app = Flask(__name__)
 
 #database connection
-app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:qwerty123@35.242.186.118/poker_players"
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False 
-db = SQLAlchemy(app)
-db.init_app(app)
-db.create_all(app=app)
-
+# app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:qwerty123@35.242.186.118/poker_players"
+# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False 
+# db = SQLAlchemy(app)
+# db.init_app(app)
+# db.create_all(app=app)
 
 
 #secretkey for forms
@@ -56,6 +54,9 @@ def players():
         newplayer= poker_players(first_name=a, last_name=b, age=c, city=d)
         db.session.add(newplayer)
         db.session.commit()
+
+    
+    
     return render_template('players.html', form=form)
 
 
@@ -86,17 +87,25 @@ def rankings():
         db.session.commit()
     return render_template('rankings.html', form=form)
 
+@app.route('/read')
+def read():
+    all_poker_player=poker_player.query.all()
+    name_string= ""
+    for item in all_poker_player:
+        name_string+="<br>"+item.first_name
+    return name_string
+
+    # all_tournements= tournement.query.all()
+    # tournement_string= ""
+    # for time_starting in tournement:
+    #     tournement_string=+"<br>"+ time_starting.name
+    #     return tournement_string
+    
 
 #@app.route('/add')
 #def add():
 
-# @app.route('/read')
-# def read():
-#    all_poker_player=poker_player.query.all()
-#     return_name_string= ""
-#     for first_name in poker_player:
-#     return_name_string+="<br>"+ first_name.name
-#     return return_name_string
+
 
 
 # from app import db, poker_players
