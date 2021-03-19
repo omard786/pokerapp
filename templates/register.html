@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{%block head %} {% endblock %}
+
+{% block body %} 
+
+    <form method="POST" action="">
+        {{ form.hidden_tag()  }} 
+        <fieldset class="form-group">
+            <legend> this is where you sign up</legend>
+            <fieldset class="form-group">
+                <div class="registrationform">
+                    {{ form.username.label(class="form-control-label") }}
+                    {{ form.username.label(class="form-control-lg") }}
+                </div>
+                <fieldset>
+                    <div class="form-group">
+                        {{ form.submit(class="btn btn-outline-info") }}
+                    </div>
+        </fieldset>
+    </form>
+
+
+{% endblock %}
+        

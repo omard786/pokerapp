@@ -1,9 +1,39 @@
 {% extends 'base.html' %}}
 
-{% block head %} 
+{% block head %} {% endblock %}
 
-<h1> Ongoing tournements</h1>
+{% block body %}
+
+<div class="content-section">
+<form method="POST" action="">
+    {{ form.hidden_tag()  }} 
+    <fieldset class="form-group">
+        <legend > tournement listing</legend>
+            <div class="form-group">
+                {{ form.tournement_id.label(class="form-control-label") }}
+                {{ form.tournement_id(class="form-control, formcontrol-lg") }}
+            </div>
+            <div class="form-group">
+                {{ form.location.label(class="form-control-label") }}
+                {{ form.location(class="form-control, formcontrol-lg") }}
+            </div>
+            <div class="form-group">
+                {{ form.time_starting.label(class="form-control-label") }}
+                {{ form.time_starting(class="form-control, formcontrol-lg") }}
+            </div>
+            <div class="form-group">
+                {{ form.player_id.label(class="form-control-label") }}
+                {{ form.player_id(class="form-control, formcontrol-lg") }}
+            </div>
+        ,<fieldset>
+            <div class="form-group">
+                {{% form.sumbit(class="btn btn-outline-info") }}
+            </div>
+
+
+     </form>
+
+    </fieldset>
+
 
 {% endblock %}
-
-{% block body %} {% endblock %}

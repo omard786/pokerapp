@@ -5,11 +5,19 @@ from application import app
 from application import db
 from application.models import poker_player, tournement, ranking
 from flask import render_template
+from wtforms import StringField, SubmitField
+from wtforms.validators import DataRequired, Length
+from wtforms.validators import DataRequired, Length
 
 
 #secretkey for forms
 app.config['SECRET_KEY'] = 'YOUR_SECRET_KEY'
 
+class registrationform(FlaskForm):
+    username = StringField('username')#, validators=DataRequired(),min=2 max=25)
+    submit = SubmitField('sign up')
+   # remember = BooleanField('remember me')
+# remember = 
 class players_form(FlaskForm):
     first_name = StringField('firstname')
     last_name = StringField('lastname')
@@ -33,6 +41,18 @@ class ranking_form(FlaskForm):
 @app.route('/home')
 def home():
     return render_template('home.html')
+
+
+
+
+@app.route("/register")
+def register():
+    form = registrationform()
+    return render_template('register.html', form=form)
+
+
+
+
 
 @app.route('/player', methods=['GET', 'POST'])
 def player():
@@ -90,7 +110,7 @@ def alltournements():
     tourn_time=""
     for item in alltournements:
         tourn_time+="<br>"+ str(item.time_starting)+" "+item.location
-    return tourn_time 
+    return tourn_time , render_template('tournements.html')
 
 @app.route('/rankings')
 def rankings():
