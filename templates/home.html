@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block head %} 
+
+<h1> welcome to my home page</h1>    
+<h2><a href="{{ url_for('home') }}"> home</a>
+    <a href="{{ url_for('player') }}">player</a> 
+    <a href="{{ url_for('alltournements') }}">tournement times</a>
+    <a href="{{ url_for('ranking') }}">ranking</a>
+    
+</h2>
+
+{% endblock %}
+
+{% block body %} {% endblock %}
