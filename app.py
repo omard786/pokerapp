@@ -80,8 +80,9 @@ def allplayers():
     allplayers=poker_player.query.all()
     name_string= ""
     for item in allplayers:
-        name_string+="<br>"+item.first_name
+        name_string+="<br>"+item.first_name+" "+ item.city
     return name_string
+
 
 @app.route('/alltournements')
 def alltournements():

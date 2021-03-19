@@ -1,6 +1,7 @@
 from application import db
 from application.models import poker_player, tournement, ranking
 
+db.drop_all()
 db.create_all()
 
 Omar= poker_player(first_name='Omar', last_name= 'Dhin', age= '23', city='bradford')
