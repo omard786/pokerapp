@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-template_dir="../templates"
+template_dir="/home/golde/pokerapp/Practice/templates"
 app=Flask(__name__,template_folder=template_dir)
 
 # #connecting to database

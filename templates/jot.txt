@@ -8,7 +8,7 @@ makes it look nicer
 for tommorrow need to look at flask forms
 need to create a update and delete feature( this can be done vvia app routes )
 
-
+look in chats and messages
 <!-- <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -19,3 +19,30 @@ need to create a update and delete feature( this can be done vvia app routes )
 </head>
  </body>
  {% block body %} {% endblock %}
+
+
+ <div class="content-section">
+<form method="POST" action="">
+    {{ form.hidden_tag()  }} 
+    <fieldset class="form-group">
+        <legend > tournement listing</legend>
+            <div class="form-group">
+                {{ form.tournement_id.label(class="form-control-label") }}
+                {{ form.tournement_id(class="form-control, formcontrol-lg") }}
+            </div>
+            <div class="form-group">
+                {{ form.location.label(class="form-control-label") }}
+                {{ form.location(class="form-control, formcontrol-lg") }}
+            </div>
+            <div class="form-group">
+                {{ form.time_starting.label(class="form-control-label") }}
+                {{ form.time_starting(class="form-control, formcontrol-lg") }}
+            </div>
+            <div class="form-group">
+                {{ form.player_id.label(class="form-control-label") }}
+                {{ form.player_id(class="form-control, formcontrol-lg") }}
+            </div>
+        ,<fieldset>
+            <div class="form-group">
+                {{% form.sumbit(class="btn btn-outline-info") }}
+            </div>

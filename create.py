@@ -22,7 +22,7 @@ db.session.add(Usama)
 db.session.commit()
 
 beginner_tourn= tournement(location= 'meeting room 1', time_starting= '14:00')
-intermediate_tourn= tournement(location= 'meeting room 2', time_starting= '16:00')
+experience= tournement(location= 'meeting room 2', time_starting= '16:00')
 professional_tourn= tournement(location= 'roof', time_starting= '18:00')
 
 db.session.add(beginner_tourn)
