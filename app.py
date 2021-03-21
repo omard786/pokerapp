@@ -1,10 +1,10 @@
-from flask import Flask,request, url_for, request, redirect
+from flask import Flask, request, redirect
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from application import app, models
 from application import db
-from application.models import poker_player, tournement, ranking 
-from flask import render_template
+from application.models import poker_player, tournement, tournement_players 
+from flask import render_template, request, url_for
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired, Length
 
@@ -26,19 +26,23 @@ class players_form(FlaskForm):
     submit = SubmitField('add_player')
 
 class tournements_form(FlaskForm):
-    tournement_id= StringField('tournement id')
-    location = StringField('location')
-    time_starting = StringField('time starting')
-    player_id= StringField('player id')
+    location= StringField('location')
+    time_starting= StringField('time starting')
     submit = SubmitField('add_tournement')
 
-class ranking_form(FlaskForm):
-    ranking_id = StringField('Ranking_id')
-    name = StringField('name')
-    position = StringField('position')
-    player_id= StringField('player id')
+class addtournementplayers_form(FlaskForm):
+    player_id = StringField('player_id')
     tournement_id = StringField('tournement_id')
-    submit = SubmitField('add your rank')
+    submit = SubmitField('add_player_tournement')
+            
+
+# class ranking_form(FlaskForm):
+#     ranking_id = StringField('Ranking_id')
+#     name = StringField('name')
+#     position = StringField('position')
+#     player_id= StringField('player id')
+#     tournement_id = StringField('tournement_id')
+#     submit = SubmitField('add your rank')
 
 
 @app.route('/', methods=[ 'GET', 'POST'])
@@ -55,22 +59,29 @@ def players():
     form=players_form()
     #this ensures the data from the website is transmitted to database 
     if(request.method=='POST'):
-        first_name=form.fullname.data
-        last_name=form.username.data
+        firstname=form.first_name.data
+        lastname=form.last_name.data
         age = form.age.data
         city = form.city.data
         #this doesnt let the fields be empty 
-        if len(first_name) == 0 or len(last_name) == 0 or len(age) == 0 or len(city)== 0:
+        if len(firstname) == 0 or len(lastname) == 0 or len(age) == 0 or len(city)== 0:
             error="please fill in all fields"
         else:
-            try:
-                new_player = models.poker_player(first_name=form.firstname.data, last_name=form.last_name.data, age=form.age.data, city=form.city.data)
+        
+                new_player = models.poker_player(first_name=firstname, last_name=lastname, age=age, city=city)
                 db.session.add(new_player)
                 db.session.commit()
-            except:
-                error = " name taken, input something different"
+                #error = " name taken, input something different"
     return render_template('players.html', form=form, message=error)
 
+
+@app.route('/allplayers')
+def allplayers():
+    allplayers=poker_player.query.all()
+    name_string= ""
+    for item in allplayers:
+        name_string+="<br>"+item.first_name+" "+ item.city
+    return name_string
 # #read route 
 # @app.route('/showplayers')
 # def showplayers():
@@ -82,27 +93,25 @@ def players():
 # @app.route('/update')
 
 #tournements
-@app.route('/tournement', methods=['GET', 'POST']) 
-def tournement():
+@app.route('/tournements', methods=['GET', 'POST']) 
+def tournements():
     error=""
     form=tournements_form()
     #this ensures the data from the website is transmitted to database 
     if(request.method=='POST'):
-        tournement_id=form.tournement_id.data
         location=form.location.data
-        time_starting = form.time_starting.data
-        player_id = form.player_id.data
+        timestarting = form.time_starting.data
         #this doesnt let the fields be empty 
-        if len(location) == 0 or len(time_starting) == 0 :
+        if len(location) == 0 or len(timestarting) == 0 :
             error="please fill in all fields"
-        try:
-            new_tournement = models.tournement(tournement_id=form.tournement_id.data, location=form.location.data,
-            time_starting=form.time_starting.data, player_id=form.player_id.data)
+        else:
+            new_tournement = models.tournement(location=location,
+            time_starting=timestarting)
             db.session.add(new_tournement)
             db.session.commit()
-        except:
-            error = " name taken, input something different"
-    return render_template('players.html', form=form, message=error)
+        # except:
+            # error = " name taken,input something different"
+    return render_template('tournements.html', form=form, message=error)
 
 #ranking
 
@@ -133,7 +142,18 @@ def ranking():
 
     
 
-
+@app.route('/addtournementplayers', methods= ['GET', 'POST'])
+def addtournementplayers():
+    error=""
+    form=addtournementplayers_form()
+    if(request.method=='POST'):
+        player_id = form.player_id.data
+        tournement_id = form.tournement_id.data
+        #this doesnt let the fields be empty 
+        new_tournement_player = models.tournement_players( player_id=player_id, tournement_id=tournement_id)
+        db.session.add(new_tournement_player)
+        db.session.commit()
+    return render_template('/addtournementplayers.html', form=form,)
 
 
 
@@ -208,13 +228,6 @@ def ranking():
 #         db.session.commit()
 #     return render_template('ranking.html', form=form)
 
-# @app.route('/allplayers')
-# def allplayers():
-#     allplayers=poker_player.query.all()
-#     name_string= ""
-#     for item in allplayers:
-#         name_string+="<br>"+item.first_name+" "+ item.city
-#     return name_string
 
 
 # @app.route('/alltournements')

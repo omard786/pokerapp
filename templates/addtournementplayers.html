@@ -1,15 +1,17 @@
 <html>
     <head>
-        <title>Create your own tournement </title>
+        <title>add tourneemnt layer form</title>
     </head>
     <body>
+        <h1> Players</h1>
+        <p> all current players in tournement</p>
         <div class='form'>
             <form method='POST' action=''>
                 {{ form.hidden_tag() }}
                 <br>
-                {{ form.location.label }} {{ form.location }}
+                {{ form.player_id.label }} {{ form.player_id }}
                 <br>
-                {{ form.time_starting.label }} {{ form.time_starting }}
+                {{ form.tournement_id.label }} {{ form.tournement_id }}
                 <br>
                 {{ form.submit }}
                 <p> {{ message }}</p>

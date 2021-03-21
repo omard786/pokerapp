@@ -1,5 +1,5 @@
 from application import db
-from application.models import poker_player, tournement, ranking
+from application.models import poker_player, tournement, tournement_players
 
 db.drop_all()
 db.create_all()
@@ -22,27 +22,32 @@ db.session.add(Usama)
 db.session.commit()
 
 beginner_tourn= tournement(location= 'meeting room 1', time_starting= '14:00')
-experience= tournement(location= 'meeting room 2', time_starting= '16:00')
+experienced_tourn= tournement(location= 'meeting room 2', time_starting= '16:00')
 professional_tourn= tournement(location= 'roof', time_starting= '18:00')
 
 db.session.add(beginner_tourn)
-db.session.add(intermediate_tourn)
+db.session.add(experienced_tourn)
 db.session.add(professional_tourn)
 db.session.commit()
 
-one=ranking(position='1')
-two=ranking(position='2')
-three=ranking(position='3')
-four=ranking(position='4')
-five=ranking(position='5')
-six=ranking(position='6')
-seven=ranking(position='7')
 
-db.session.add(one)
-db.session.add(two)
-db.session.add(three)
-db.session.add(four)
-db.session.add(five)
-db.session.add(six)
-db.session.add(seven)
-db.session.commit()
+
+
+
+
+# one=ranking(position='1')
+# two=ranking(position='2')
+# three=ranking(position='3')
+# four=ranking(position='4')
+# five=ranking(position='5')
+# six=ranking(position='6')
+# seven=ranking(position='7')
+
+# db.session.add(one)
+# db.session.add(two)
+# db.session.add(three)
+# db.session.add(four)
+# db.session.add(five)
+# db.session.add(six)
+# db.session.add(seven)
+# db.session.commit()
