@@ -3,6 +3,13 @@
         <title>Create your own tournement </title>
     </head>
     <body>
+        <h1><a href="{{ url_for('home') }}"> home</a>
+            <a href="{{ url_for('players') }}">player</a> 
+            <a href="{{ url_for('tournements') }}">tournement</a>
+            <a href="{{ url_for('allplayers') }}"> all players</a>
+            <a href="{{ url_for('addtournementplayers') }}"> add tournement players</a>
+</h1>
+<h2> tournement</h2>
         <div class='form'>
             <form method='POST' action=''>
                 {{ form.hidden_tag() }}

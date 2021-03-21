@@ -82,6 +82,61 @@ def allplayers():
     for item in allplayers:
         name_string+="<br>"+item.first_name+" "+ item.city
     return name_string
+
+@app.route('/deletefirstplayer')
+def deletefirstplayer():
+    message = 'you have deleted the first player in the database'
+    playertodelete = poker_player.query.first()
+    db.session.delete(playertodelete)
+    db.session.commit()
+    return message
+
+# @app.route('/update/<int:player_id>')
+# def update (firstplayername):
+#     firstplayername= poker_player.query.first()
+#     firstplayer.name=name
+#     db.session.commit()
+#     return firstplayer.name
+# @app.route('/update/<int:player_id>', methods=['GET','POST'])
+# def updateplayer(player_id):
+#     player_to_update = models.poker_player.query.filter_by(id=player_id).first()
+#     error = ""
+#     form = players_form()
+
+#     if request.method == 'POST':
+#         player_to_update.first_name = form.first_name.data
+#         player_to_update.last_name = form.last_name.data
+#         player_to_update.age = form.age.data
+#         player_to_update.city = form.city.data
+
+#         if len(str(form.first_name.data)) == 0 or len(str(form.last_name.data)) == 0:
+#             error = "Please fill in all fields"
+            
+#         else:
+#             db.session.commit()
+#             return redirect('/home')
+
+#     else:
+#         form.product_id.data = order_to_update.product_id
+#         form.quantity.data = order_to_update.quantity
+#         form.total_price.data = order_to_update.total_price
+#         form.date_ordered.data = order_to_update.date_ordered
+    
+# @app.route('/update/<player>')
+# def updateplayer():
+#     last_player= poker_player.query.last()
+#     last_player.name= player
+#     db.session.commit()
+#     return last_player.name
+
+
+
+
+
+
+
+
+#     return render_template('players.html', form=form, message=error)
 # #read route 
 # @app.route('/showplayers')
 # def showplayers():
@@ -115,30 +170,7 @@ def tournements():
 
 #ranking
 
-@app.route('/ranking', methods=['GET', 'POST']) 
-#@app.route('/home', methods=['GET', 'POST'])
-def ranking():
-    error=""
-    form=ranking_form()
-    #this ensures the data from the website is transmitted to database 
-    if(request.method=='POST'):
-        ranking_id=form.ranking_id.data
-        name = form.name.data
-        position=form.position.data
-        player_id = form.player_id.data
-        tournement_id = form.tournement_id.data
-        #this doesnt let the fields be empty 
-        if len(name) == 0 or len(position) == 0:
-            error="please fill in all fields"
-        try:
-                new_ranking = models.ranking(ranking_id=form.ranking_id.data, name=form.name.data,
-                position=form.position.data, player_id=form.player_id.data, tournement_id=form.tournement_id.data)
-                db.session.add(new_tournement)
-                db.session.commit()
-            
-        except:
-                error = " name taken, input something different"
-    return render_template('players.html', form=form, message=error)
+
 
     
 
