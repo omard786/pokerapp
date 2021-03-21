@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>Create your own tournement </title>
+    </head>
+    <body>
+        <div class='form'>
+            <form method='POST' action=''>
+                {{ form.hidden_tag() }}
+                {{ form.tournement_id.label }} {{ form.tournement_id }}
+                <br>
+                {{ form.location.label }} {{ form.location }}
+                <br>
+                {{ form.time_starting }} {{ form.time_starting }}
+                <br>
+                {{ form.player_id.label }} {{ form.player_id }}
+                <br>
+                {{ form.submit }}
+                <p> {{ message }}</p>
+            </form>
+        </div>
+    </body>
+</html>

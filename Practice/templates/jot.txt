@@ -1,0 +1,48 @@
+need to create a <div in html in order to make it look better 
+hidden tag in html adds a  token, hidden tag is connected to secret key
+come back to do css so it looks nicer 
+ <dir class="registrationform">
+                    {{ form.username.label(class="form-control-label")}} 
+makes it look nicer 
+
+for tommorrow need to look at flask forms
+need to create a update and delete feature( this can be done vvia app routes )
+
+look in chats and messages
+<!-- <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {%block head %} {% endblock %}
+</head>
+ </body>
+ {% block body %} {% endblock %}
+
+
+ <div class="content-section">
+<form method="POST" action="">
+    {{ form.hidden_tag()  }} 
+    <fieldset class="form-group">
+        <legend > tournement listing</legend>
+            <div class="form-group">
+                {{ form.tournement_id.label(class="form-control-label") }}
+                {{ form.tournement_id(class="form-control, formcontrol-lg") }}
+            </div>
+            <div class="form-group">
+                {{ form.location.label(class="form-control-label") }}
+                {{ form.location(class="form-control, formcontrol-lg") }}
+            </div>
+            <div class="form-group">
+                {{ form.time_starting.label(class="form-control-label") }}
+                {{ form.time_starting(class="form-control, formcontrol-lg") }}
+            </div>
+            <div class="form-group">
+                {{ form.player_id.label(class="form-control-label") }}
+                {{ form.player_id(class="form-control, formcontrol-lg") }}
+            </div>
+        ,<fieldset>
+            <div class="form-group">
+                {{% form.sumbit(class="btn btn-outline-info") }}
+            </div>

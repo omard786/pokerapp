@@ -3,8 +3,22 @@
     </head>
     <body>
         <h1> welcome to my players page </h1>
-        <h2> <a href="{{ url_for('home') }}">home</a></h2>
-        
+        <h2> <a href="{{ url_for('home') }}">home</a>
+            <a href="{{ url_for('tournements') }}">tournements</a>
+            <a href="{{ url_for('rankings') }}">rankings</a>
+        </h2>
+        <h3></h3>
+        <form action="" method= 'POST'>
+        <a> first name</a>
+        <input name="firstname">
+        <a> last name </a>
+        <input name="lastname">
+        <a> age </a>
+        <input name="age">
+        <a> City</a>
+        <input name="city">
+        <input type="submit"value="Submit">
+    </form>
     </body>
 </html>
 

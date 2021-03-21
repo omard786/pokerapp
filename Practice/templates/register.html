@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>Register form</title>
+    </head>
+    <body>
+        <h3> <a href="{{ url_for('home') }}"> home</a></h3>
+        <div class='form'>
+            <form method='POST' action=''>
+                {{ form.hidden_tag() }}
+                {{ form.fullname.label }} {{ form.fullname }}
+                <br>
+                {{ form.username.label }} {{ form.username }}
+                <br>
+                {{ form.submit }}
+                <p> {{ message }}</p>
+            </form>
+        </div>
+    </body>
+</html>

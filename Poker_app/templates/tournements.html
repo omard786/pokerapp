@@ -3,7 +3,22 @@
     </head>
     <body>
         <h1> current ongoing tournements </h1>
-        <h2> <a href="{{ url_for('home') }}">home</a></h2>
+        <h2> <a href="{{ url_for('home') }}">home</a>
+            <a href="{{ url_for('players') }}">players</a> 
+            <a href="{{ url_for('rankings') }}">rankings</a>
+
+         <form action="" method= 'POST'>
+         <a> tournement id</a>
+         <input name="tournement_id">
+         <a> location</a>
+         <input name="location">
+         <a> time starting</a>
+         <input name="time_starting">
+         <input type="submit"value="Submit">
+        </form>
+
+        
+        </h2>
         
     </body>
 </html>

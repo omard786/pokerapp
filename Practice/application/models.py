@@ -18,5 +18,12 @@ class tournement(db.Model):
     
 class ranking(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String, nullable=False)
+    position=db.Column(db.Integer, nullable=False)
     player_id = db.Column(db.Integer, db.ForeignKey('poker_player.id'))
     tournement_id = db.Column(db.Integer, db.ForeignKey('tournement.id'))
+
+# class registrationform(db.model):
+#     id = db.Column(db.Integer, primary_key=True)
+#     fullname= db.Column(db.String(30), nullable=False)
+#     username= db.Column(db.String(30), nullable=False)

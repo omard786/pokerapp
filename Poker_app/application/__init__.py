@@ -1,14 +1,18 @@
-# #init is the application constructor 
-# #link to the databases in this app 
-# from flask import Flask
-# from flask_sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy
+from flask import Flask
 
-# app = flask(__name__)
+template_dir="../templates"
+app = Flask(__name__, template_folder=template_dir)
+
 # #connecting to database
-# app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:qwerty123@35.242.186.118/poker_players"
-# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:qwerty123@35.242.186.118/poker_players"
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(app)
+db.init_app(app)
 
-# db = SQLAlchemy(app)
+db.create_all(app=app)
 
-# from application import routes
+db = SQLAlchemy(app)
+
+from application import routes
 

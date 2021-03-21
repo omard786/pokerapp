@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>Player form</title>
+    </head>
+    <body>
+        <h1> Players</h1>
+        <p> all current players</p>
+        <div class='form'>
+            <form method='POST' action=''>
+                {{ form.hidden_tag() }}
+                <br>
+                {{ form.first_name.label }} {{ form.first_name.name }}
+                <br>
+                {{ form.last_name.label }} {{ form.last_name.name }}
+                <br>
+                {{ form.age.label }} {{ form.age }}
+                <br>
+                {{ form.city.label }} {{ form.city }}
+                <br>
+                {{ form.submit }}
+                <p> {{ message }}</p>
+            </form>
+        </div>
+    </body>
+</html>
